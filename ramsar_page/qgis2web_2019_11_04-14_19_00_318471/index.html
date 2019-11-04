@@ -59,7 +59,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-39.371067174175735,141.5345386888372],[-34.451237086401335,148.29713198970023]]);
+        }).fitBounds([[-40.18365368583465,142.21418903486796],[-34.01669158869961,148.976782335731]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &vert; <a href="http://leafletjs.com">Leaflet</a> &vert; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>');
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
@@ -130,7 +130,7 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 0.4,
+                fillOpacity: 0.5,
                 fillColor: 'rgba(234,152,0,1.0)',
             }
                     break;
@@ -144,7 +144,7 @@
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
-                fillOpacity: 0.4,
+                fillOpacity: 0.5,
                 fillColor: 'rgba(202,202,202,1.0)',
             }
                     break;
@@ -182,6 +182,14 @@
                     <tr>\
                         <th scope="row">WETLAND_NA</th>\
                         <td>' + (feature.properties['WETLAND_NA'] !== null ? Autolinker.link(String(feature.properties['WETLAND_NA'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">STATE</th>\
+                        <td>' + (feature.properties['STATE'] !== null ? Autolinker.link(String(feature.properties['STATE'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">JURISDICTI</th>\
+                        <td>' + (feature.properties['JURISDICTI'] !== null ? Autolinker.link(String(feature.properties['JURISDICTI'])) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">DESIGNATIO</th>\
@@ -251,25 +259,12 @@
         L.control.layers(baseMaps,{'<img src="legend/Ramsarwetlands_2.png" /> Ramsar wetlands': layer_Ramsarwetlands_2,'VIC_districts_with_a_ramsar<br /><table><tr><td style="text-align: center;"><img src="legend/VIC_districts_with_a_ramsar_1_With0.png" /></td><td>With</td></tr><tr><td style="text-align: center;"><img src="legend/VIC_districts_with_a_ramsar_1_Without1.png" /></td><td>Without</td></tr></table>': layer_VIC_districts_with_a_ramsar_1,"OpenStreetMap": layer_OpenStreetMap_0,},{collapsed:false}).addTo(map);
         setBounds();
         var i = 0;
-        layer_VIC_districts_with_a_ramsar_1.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            layer.bindTooltip((layer.feature.properties['Electorate'] !== null?String('<div style="color: #000000; font-size: 12pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Electorate']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_VIC_districts_with_a_ramsar_1'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
-        });
-        var i = 0;
         layer_Ramsarwetlands_2.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((label_Ramsarwetlands_2_eval_expression(context) !== null?String('<div style="color: #003d80; font-size: 13pt; font-weight: bold; font-family: \'MS Shell Dlg 2\', sans-serif;">' + label_Ramsarwetlands_2_eval_expression(context)) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Ramsarwetlands_2'});
+            layer.bindTooltip((label_Ramsarwetlands_2_eval_expression(context) !== null?String('<div style="color: #003d80; font-size: 10pt; font-weight: bold; font-family: \'MS Shell Dlg 2\', sans-serif;">' + label_Ramsarwetlands_2_eval_expression(context)) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Ramsarwetlands_2'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;

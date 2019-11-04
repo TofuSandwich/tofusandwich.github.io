@@ -758,13 +758,13 @@ function fnc_project_color(values, context) {
 
 
 function label_Ramsarwetlands_2_eval_expression(context) {
-    // REFCODE || ' - ' || WETLAND_NA
+    // REFCODE || ' - ' || RAMSAR_NAM
 
     var feature = context.feature;
     
     if (feature.properties) {
-        return ((feature.properties['REFCODE']  + ' - ') + feature.properties['WETLAND_NA'] );
+        return ((feature.properties['REFCODE']  + ' - ') + feature.properties['RAMSAR_NAM'] );
     } else {
-        return ((feature['REFCODE']  + ' - ') + feature['WETLAND_NA'] );
+        return ((feature['REFCODE']  + ' - ') + feature['RAMSAR_NAM'] );
     }
 }
